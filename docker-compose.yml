@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ./initial.sql:/docker-entrypoint-initdb.d/initial.sql
+      - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+  activemq:
+    image: webcenter/activemq
+    ports:
+      - 61616:61616
+      - 8161:8161

@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "kysely": "npm:kysely@0.26.3",
+    "pg": "npm:pg@8.11.3",
+    "pg-pool": "npm:pg-pool@3.6.1",
+    "std/": "https://deno.land/std@0.208.0/"
+  }
+}
