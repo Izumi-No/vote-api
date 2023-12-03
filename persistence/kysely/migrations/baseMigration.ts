@@ -4,7 +4,7 @@ export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
     .createTable("users")
     .addColumn("id", "uuid", (col) => col.primaryKey())
-    .addColumn("name", "text", (col) => col.notNull())
+    .addColumn("name", "text", (col) => col.notNull().unique())
     .addColumn("password", "text", (col) => col.notNull())
     .addColumn("refresh_token", "text")
     .execute();
@@ -41,9 +41,9 @@ export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
     .createTable("votes")
     .addColumn("id", "uuid", (col) => col.primaryKey())
-    .addColumn("user_id", "uuid", (col) => col.notNull())
     .addColumn("voting_id", "uuid", (col) => col.notNull())
     .addColumn("participant_id", "uuid", (col) => col.notNull())
+    .addColumn("user_id", "uuid", (col) => col.notNull())
     .addColumn("created_at", "timestamp", (col) =>
       col.notNull().defaultTo(sql`now()`)
     )
