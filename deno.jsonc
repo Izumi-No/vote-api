@@ -1,3 +1,6 @@
 {
-  "importMap": "./import_map.json"
+  "importMap": "./import_map.json",
+  "tasks": {
+    "gen-keys": "rm -rf keys && mkdir keys && deno run -A --unstable ./scripts/gen-keys.ts"
+  }
 }
